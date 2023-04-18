@@ -1,14 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	
-	<!-- <parent> 태그를 이용하여 또 다른 POM 설정을 상속할 수 있다. 따라서 눈에 보이지는 않지만 부모 설정파일로부터 수많은 <dependency> 설정을 상속받아 가지게 되는 것 -->
+
+	<!-- <parent> 태그를 이용하여 또 다른 POM 설정을 상속할 수 있다. 따라서 눈에 보이지는 않지만 부모 설정파일로부터 
+		수많은 <dependency> 설정을 상속받아 가지게 되는 것 -->
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
 		<version>2.6.3</version>
-		<relativePath/> <!-- lookup parent from repository -->
+		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.myboot01</groupId>
 	<artifactId>myboot01</artifactId>
@@ -24,11 +26,9 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-jdbc</artifactId>
 		</dependency>
-		
-		<!-- 웹 애플리케이션에 필요한 스프링 MVC 관련 라이브러리 
-		스프링 부트가 웹 프로젝트 환경에 최적화된 라이브러리 들을 등록해준다. 이때 톰켓 라이브러리도 같이 다운로드되었으며, 애플리케이션
-		실행시 이 내장 톰캣이 구동된 것
-		-->
+
+		<!-- 웹 애플리케이션에 필요한 스프링 MVC 관련 라이브러리 스프링 부트가 웹 프로젝트 환경에 최적화된 라이브러리 들을 등록해준다. 
+			이때 톰켓 라이브러리도 같이 다운로드되었으며, 애플리케이션 실행시 이 내장 톰캣이 구동된 것 -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
@@ -44,13 +44,45 @@
 			<artifactId>spring-boot-starter-tomcat</artifactId>
 			<scope>provided</scope>
 		</dependency>
-		
+
 		<!-- JUnit을 비롯한 테스트 관련 라이브러리 -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+		<!-- jsp쓰려면 thymeleaf주석처리해야함 -->
+		<!-- <dependency> <groupId>org.springframework.boot</groupId> <artifactId>spring-boot-starter-thymeleaf</artifactId> 
+			</dependency> -->
+
+		<!-- Springboot에서는 jsp가 기본 웹페이작 아니므로 jstl과 jasper 반드시 추가해줘야 함 -->
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>jstl</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.tomcat.embed</groupId>
+			<artifactId>tomcat-embed-jasper</artifactId>
+			<scope>provided</scope>
+		</dependency>
+		<!-- 컨트롤러를 수정할 때마다 매번 에플리케이션을 재실행하는 것이 귀찮으면 스프링부트가 제공가하는 DevTools 기능을 이용하면 
+			됨 -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-devtools</artifactId>
+			<scope>runtime</scope>
+		</dependency>
+		<!-- 롬복 Lombok(롬복)은 Java 라이브러리로 반복되는 getter, setter, toString 등의 메서드 작성 
+			코드를 줄여주는 코드 다이어트 라이브러리입니다. 롬복 라이브러리만 다운로드했다고 바로 사용할 수는 없다. 롬복을 사용하려면 별도로 
+			이클립스 설치 폴더에 롬복 라이브러리를 추가해야 한다. 이클립스 종료 후 롬복홈페이지(projectlombok.org)에 접속해서 
+			다운로드 후 java -jar lombok.jar 이클립스 위치 설정 후 이클립스(STS) 재시작 -->
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+		</dependency>
+
+
 	</dependencies>
 
 	<build>
